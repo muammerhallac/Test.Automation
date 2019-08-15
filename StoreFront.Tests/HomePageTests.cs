@@ -6,27 +6,14 @@ using System;
 namespace StoreFront.Tests
 {
     [TestClass]
-    public class HomePageTests
+    public class HomePageTests : TestsBase
     {
-        #region Fields
-        IWebDriver driver;
-        const string HomePageUrl = "https://www.hangikredi.com";
-        const string DriversBase = "Drivers";
-        #endregion
-
-        [TestInitialize]
-        public void Initialize()
-        {
-            //driver = new OpenQA.Selenium.Firefox.FirefoxDriver(DriversBase);
-            driver = new OpenQA.Selenium.Chrome.ChromeDriver(DriversBase);
-        }
-        
         [TestMethod]
         public void Can_Navigate_To_Main_Page()
         {
             driver.Navigate().GoToUrl(HomePageUrl);
             IWebElement logo = driver.FindElement(By.ClassName("home-logo"));
-            Assert.IsNotNull(logo);
+            logo.ShoultNotBeNull();
         }
 
         [TestMethod]
@@ -37,9 +24,9 @@ namespace StoreFront.Tests
             creditTab.Click();
             var showBidsButton = driver.FindElement(By.Id("teklif-goster"));
 
-            Assert.IsNotNull(creditTab);
-            Assert.IsNotNull(showBidsButton);
-            Assert.IsTrue(showBidsButton.Displayed);
+            creditTab.ShoultNotBeNull();
+            showBidsButton.ShoultNotBeNull();
+            showBidsButton.ShouldBeDisplayed();
         }
 
         [TestMethod]
@@ -52,8 +39,8 @@ namespace StoreFront.Tests
 
             var creditCardPageListingButton = driver.FindElement(By.Id("listButton"));
 
-            Assert.IsNotNull(creditCardPageListingButton);
-            Assert.IsTrue(creditCardPageListingButton.Displayed);
+            creditCardPageListingButton.ShoultNotBeNull();
+            creditCardPageListingButton.ShouldBeDisplayed();
         }
 
         [TestMethod]
@@ -68,14 +55,14 @@ namespace StoreFront.Tests
             var trafficInsuranceRedirectButton = driver.FindElement(By.LinkText("Trafik Sigortası Teklifleri"));
             var healthInsuranceRedirectButton = driver.FindElement(By.LinkText("Sağlık Sigortası Teklifleri"));
 
-            Assert.IsNotNull(insuranceTab);
-            Assert.IsNotNull(insuranceRedirectButton);
-            Assert.IsNotNull(trafficInsuranceRedirectButton);
-            Assert.IsNotNull(healthInsuranceRedirectButton);
+            insuranceTab.ShoultNotBeNull();
+            insuranceRedirectButton.ShoultNotBeNull();
+            trafficInsuranceRedirectButton.ShoultNotBeNull();
+            healthInsuranceRedirectButton.ShoultNotBeNull();
 
-            Assert.IsTrue(insuranceRedirectButton.Displayed);
-            Assert.IsTrue(trafficInsuranceRedirectButton.Displayed);
-            Assert.IsTrue(healthInsuranceRedirectButton.Displayed);
+            insuranceRedirectButton.ShouldBeDisplayed();
+            trafficInsuranceRedirectButton.ShouldBeDisplayed();
+            healthInsuranceRedirectButton.ShouldBeDisplayed();
         }
 
         [TestMethod]
@@ -90,14 +77,14 @@ namespace StoreFront.Tests
             var currencyRedirectButton = driver.FindElement(By.LinkText("Döviz"));
             var goldRedirectButton = driver.FindElement(By.LinkText("Altın"));
 
-            Assert.IsNotNull(depositTab);
-            Assert.IsNotNull(depositCalculationRedirectButton);
-            Assert.IsNotNull(currencyRedirectButton);
-            Assert.IsNotNull(goldRedirectButton);
+            depositTab.ShoultNotBeNull();
+            depositCalculationRedirectButton.ShoultNotBeNull();
+            currencyRedirectButton.ShoultNotBeNull();
+            goldRedirectButton.ShoultNotBeNull();
 
-            Assert.IsTrue(depositCalculationRedirectButton.Displayed);
-            Assert.IsTrue(currencyRedirectButton.Displayed);
-            Assert.IsTrue(goldRedirectButton.Displayed);
+            depositCalculationRedirectButton.ShouldBeDisplayed();
+            currencyRedirectButton.ShouldBeDisplayed();
+            goldRedirectButton.ShouldBeDisplayed();
         }
 
         [TestMethod]
@@ -114,18 +101,18 @@ namespace StoreFront.Tests
             var triplePackageRedirectButton = driver.FindElement(By.LinkText("3’lü Paket"));
             var allInternetPackagesRedirectButton = driver.FindElement(By.LinkText("Tüm İnternet Paketlerini Gör"));
 
-            Assert.IsNotNull(internetTab);
-            Assert.IsNotNull(leanInternetRedirectButton);
-            Assert.IsNotNull(phonePlusInternetRedirectButton);
-            Assert.IsNotNull(tvPlusInternetRedirectButton);
-            Assert.IsNotNull(triplePackageRedirectButton);
-            Assert.IsNotNull(allInternetPackagesRedirectButton);
+            internetTab.ShoultNotBeNull();
+            leanInternetRedirectButton.ShoultNotBeNull();
+            phonePlusInternetRedirectButton.ShoultNotBeNull();
+            tvPlusInternetRedirectButton.ShoultNotBeNull();
+            triplePackageRedirectButton.ShoultNotBeNull();
+            allInternetPackagesRedirectButton.ShoultNotBeNull();
 
-            Assert.IsTrue(leanInternetRedirectButton.Displayed);
-            Assert.IsTrue(phonePlusInternetRedirectButton.Displayed);
-            Assert.IsTrue(tvPlusInternetRedirectButton.Displayed);
-            Assert.IsTrue(triplePackageRedirectButton.Displayed);
-            Assert.IsTrue(allInternetPackagesRedirectButton.Displayed);
+            leanInternetRedirectButton.ShouldBeDisplayed();
+            phonePlusInternetRedirectButton.ShouldBeDisplayed();
+            tvPlusInternetRedirectButton.ShouldBeDisplayed();
+            triplePackageRedirectButton.ShouldBeDisplayed();
+            allInternetPackagesRedirectButton.ShouldBeDisplayed();
         }
 
         [TestMethod]
@@ -152,7 +139,7 @@ namespace StoreFront.Tests
 
             var navigatedPageHeaderTitle = driver.FindElement(By.Id("divHeaderTitle"));
 
-            Assert.IsTrue(navigatedPageHeaderTitle.Displayed);
+            navigatedPageHeaderTitle.ShouldBeDisplayed();
         }
 
         [TestMethod]
@@ -187,7 +174,7 @@ namespace StoreFront.Tests
             driver.SwitchTo().ActiveElement();
             var navigatedPageHeaderTitle = driver.FindElement(By.Id("housingHeader"));
 
-            Assert.IsTrue(navigatedPageHeaderTitle.Displayed);
+            navigatedPageHeaderTitle.ShouldBeDisplayed();
         }
 
         [TestMethod]
@@ -222,7 +209,7 @@ namespace StoreFront.Tests
             driver.SwitchTo().ActiveElement();
             var navigatedPageHeaderTitle = driver.FindElement(By.Id("divHeaderTitle"));
 
-            Assert.IsTrue(navigatedPageHeaderTitle.Displayed);
+            navigatedPageHeaderTitle.ShouldBeDisplayed();
         }
 
         [TestMethod]
@@ -249,7 +236,7 @@ namespace StoreFront.Tests
             
             var navigatedPageHeaderTitle = driver.FindElement(By.Id("divHeaderTitle"));
             
-            Assert.IsTrue(navigatedPageHeaderTitle.Displayed);
+            navigatedPageHeaderTitle.ShouldBeDisplayed();
         }
 
         [TestCleanup]
