@@ -60,7 +60,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions.cs" />
-    <Compile Include="HomePageTests.cs" />
+    <Compile Include="Pages\CreditCalculationToolsPageTests.cs" />
+    <Compile Include="Pages\HomePageTests.cs" />
+    <Compile Include="Pages\MortgageLoanPageTests.cs" />
+    <Compile Include="Pages\PersonalFinanceCreditPageTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestsBase.cs" />
   </ItemGroup>

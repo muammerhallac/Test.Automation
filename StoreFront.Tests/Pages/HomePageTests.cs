@@ -3,13 +3,13 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
 
-namespace StoreFront.Tests
+namespace StoreFront.Tests.Pages
 {
     [TestClass]
     public class HomePageTests : TestsBase
     {
         [TestMethod]
-        public void Can_Navigate_To_Main_Page()
+        public void Can_Navigate_To_Home_Page()
         {
             driver.Navigate().GoToUrl(HomePageUrl);
             IWebElement logo = driver.FindElement(By.ClassName("home-logo"));
@@ -237,13 +237,6 @@ namespace StoreFront.Tests
             var navigatedPageHeaderTitle = driver.FindElement(By.Id("divHeaderTitle"));
             
             navigatedPageHeaderTitle.ShouldBeDisplayed();
-        }
-
-        [TestCleanup]
-        public void Cleanup()
-        {
-            driver.Close();
-            driver.Dispose();
         }
     }
 }
