@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,14 +37,13 @@ namespace StoreFront.Tests.Pages
             var creditType = driver.FindElement(By.XPath("//li[@data-value='1']"));
             creditType.Click();
 
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
-
             var amountTextBox = driver.FindElement(By.Id("Tutar"));
             amountTextBox.Click();
             amountTextBox.SendKeys("25000");
 
             javaScriptExecutor.ExecuteScript(@"$('.krediVadeHs').find('.hk-select.form-control').attr('class', 'hk-select form-control hk-active')");
-            var expirationBox = driver.FindElement(By.XPath("//li[@data-value='3']"));
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            var expirationBox = wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//li[@data-value='3']")));
             expirationBox.Click();
 
             var showBidsButton = driver.FindElement(By.Id("krediHesapla"));
